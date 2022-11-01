@@ -1,0 +1,18 @@
+html{
+    margin: 0px;
+    font-family: Bahnschrift, Geneva, Tahoma, sans-serif;
+    background-color: #ffffff;
+    font-size: 12px;
+
+}
+.box-search{
+    background-image: url(https://images.unsplash.com/photo-1551434678-e076c223a692?crop=entropy&cs=tinysrgb&fm=jpg&ixid=MnwzNzY2NTN8MHwxfHNlYXJjaHwxfHxkZXZlbG9wZXJzfGVufDB8fHx8MTY2NzMwNDI3Mw&ixlib=rb-4.0.3&q=80);
+    background-size: 100% auto;
+    background-position: center top;
+    background-repeat: no-repeat;
+    
+}
+.h-img{
+    height: 100px;
+    display: flex;
+}
