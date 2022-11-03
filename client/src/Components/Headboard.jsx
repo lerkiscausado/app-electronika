@@ -1,9 +1,9 @@
 import React, { Fragment} from 'react';
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import axios from "axios";
 
-
-const Headboard =()=>{
+const Headboard =(props)=>{
     
     return (
         <Fragment>
@@ -18,7 +18,7 @@ const Headboard =()=>{
                         <h3 className='d-inline'>Mis Imagenes Favoritas</h3>
                     </div>                    
                     <div className="col-md-3">
-                        <button className='btn btn-outline-danger mt-4'><i class="bi bi-heart"></i> Mis favoritos</button>
+                        <button className='btn btn-outline-danger mt-4' onClick={()=>{props.parentCallback()}}><i class="bi bi-heart"></i> Mis favoritos</button>
                     </div>
                 </div>
             </div>

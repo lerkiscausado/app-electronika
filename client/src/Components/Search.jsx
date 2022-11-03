@@ -18,7 +18,7 @@ const Search =(props)=>{
             headers: headers
         });     
         //console.log(response.data);
-        return props.parentCallback(response.data);        
+        return props.parentCallback(response.data), props.visibleImg('d-block'), props.visibleFavorites('d-none');        
     }
     return (
         <Fragment>

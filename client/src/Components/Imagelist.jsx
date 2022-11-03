@@ -2,8 +2,34 @@ import React, { Fragment} from 'react';
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import "../styles.css";
+import axios from "axios";
+import salert from "sweetalert";
 const Imagelist =(props)=>{
-   
+    const DownloadImg=(link)=>{        
+        //Descargar Imagen    
+        var source = link;
+        var a = document.createElement('a');
+        a.download = true;
+        a.target = '_blank';
+        a.href= source;
+        a.click();   
+    }
+    const addFavorite= async(e)=>{
+        const datosFavoritos={
+            description: e.description,
+            small: e.urls.small,
+            regular: e.urls.regular
+        }        
+        try {
+            const res = await axios.post(
+                "http://localhost:5000/favorites",
+                datosFavoritos
+            );              
+            salert("Mis Favoritos", "La Imagen se agrego a Favoritos", "success")
+        } catch (error) {
+            console.log(error)
+        }                
+    }
     //console.log(props.datos);
     if (props.datos.total > 0) {
         return (
@@ -22,8 +48,15 @@ const Imagelist =(props)=>{
                                     />
                                     <p className='text-center'>
                                         {todo.description}<br/>
-                                        <button className='btn btn-outline-danger mt-3 me-2'><i className="bi bi-heart"> Añadir a Favoritos</i></button>
-                                        <button className='btn btn-outline-primary mt-3'><i className="bi bi-arrow-down-circle"></i> Descargar</button>
+                                        <button 
+                                            className='btn btn-outline-danger mt-3 me-2' 
+                                            onClick={()=>addFavorite(todo)}>
+                                            <i className="bi bi-heart">Añadir a Favoritos</i>
+                                        </button>
+                                        <button className='btn btn-outline-primary mt-3' onClick={()=>{DownloadImg(todo.urls.regular)}}>
+                                            <i className="bi bi-arrow-down-circle"></i> 
+                                            Descargar
+                                        </button>
                                     </p>
                                 </div>
                             ))
